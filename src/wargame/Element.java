@@ -1,5 +1,9 @@
 package wargame;
 
-public abstract class Element {
+import wargame.View.IConfig;
 
+public abstract class Element implements IConfig{
+	
+	
+	
 }

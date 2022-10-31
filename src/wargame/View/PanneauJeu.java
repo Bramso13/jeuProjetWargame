@@ -1,4 +1,4 @@
-package wargame;
+package wargame.View;
 
 public class PanneauJeu {
 	

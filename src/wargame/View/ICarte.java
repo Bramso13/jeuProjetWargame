@@ -1,5 +1,10 @@
-package wargame;
+package wargame.View;
 import java.awt.Graphics;
+
+import wargame.Element;
+import wargame.Heros;
+import wargame.Position;
+import wargame.Soldat;
 
 
 public interface ICarte {

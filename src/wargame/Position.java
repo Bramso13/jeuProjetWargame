@@ -1,5 +1,6 @@
 package wargame;
 
+import wargame.View.IConfig;
 
 public class Position implements IConfig {
 	private int x, y;

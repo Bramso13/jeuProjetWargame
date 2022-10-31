@@ -1,4 +1,4 @@
-package wargame;
+package wargame.View;
 import java.awt.Color;
 
 
