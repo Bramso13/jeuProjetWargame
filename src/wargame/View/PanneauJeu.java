@@ -3,6 +3,8 @@ package wargame.View;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -31,14 +33,14 @@ public class PanneauJeu extends JFrame implements IConfig{
 		panel.setBounds(0, 0, LARGEUR_CARTE*NB_PIX_CASE, HAUTEUR_CARTE*NB_PIX_CASE);
 		
 		Color couleur = COULEUR_VIDE;
-		int o=0;
+		
 		Color foreCouleur = Color.BLUE;
 		System.out.println("nb monstre "+Element.nb_monstre);
 		for(int i=0;i<LARGEUR_CARTE;i++) {
 			for(int j=0;j<HAUTEUR_CARTE;j++) {
 				
 				if(carte.getTabElement()[i][j] instanceof Obstacle) {
-					o++;
+					
 					couleur = Color.green;
 					foreCouleur = Color.white;
 				}
@@ -66,16 +68,65 @@ public class PanneauJeu extends JFrame implements IConfig{
 				bouton.setOpaque(true);
 				bouton.setBackground(couleur);
 			    bouton.setForeground(foreCouleur);
-				
+			    if(carte.getTabElement()[i][j] == null) {
+			    	bouton.addActionListener(new BoutonActionListener(i, j, bouton));
+			    }else {
+			    	
+			    	bouton.addActionListener(new BoutonActionListener(carte.getTabElement()[i][j]));
+			    }
 				panel.add(bouton);
 			}
 		}
-		System.out.println("o "+o);
+		
 		
 		this.add(panel);
 	}
 	
-	
+	private static class BoutonActionListener implements ActionListener {
+		
+		private Element elem;
+		private int x;
+		private int y;
+		private static int xBase=0;
+		private static int yBase=0;
+		private static int interupteur=0;
+		private JButton b;
+		private Color couleur = Color.black;
+		
+		BoutonActionListener(Element e){
+			elem = e;
+		}
+		
+		BoutonActionListener(int x, int y, JButton bouton){
+			System.out.println("x "+x+" xBase "+xBase+" y "+y+" yBase "+yBase);
+			this.x = x;
+			this.y = y;
+			this.b = bouton;
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(elem != null)
+				elem.test();
+			else {
+				this.b.setBackground(couleur);
+				if(x == xBase && y==yBase) {
+					BoutonActionListener.interupteur = 1-BoutonActionListener.interupteur;
+					if(couleur.equals(Color.black)) {
+						couleur = Color.white;
+					}else {
+						couleur = Color.black;
+					}
+					this.b.setBackground(couleur);
+				}
+				BoutonActionListener.xBase = x;
+				BoutonActionListener.yBase = y;
+				System.out.println("interupteur "+BoutonActionListener.interupteur);
+			}
+		}
+		
+	}
 	
 
 }
