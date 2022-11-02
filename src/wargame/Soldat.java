@@ -9,6 +9,14 @@ public abstract class Soldat extends Element implements ISoldat {
 	private Position pos;
 	private int tour;
 	
+	public Soldat() {
+		this.POINTS_DE_VIE_MAX = 0;
+		this.PUISSANCE = 0;
+		this.TIR = 0;
+		this.PORTEE_VISUELLE = 0;
+		
+	}
+	
 	public Soldat(Carte carte, int pts, int portee, int puiss, int tir, Position pos) {
 		POINTS_DE_VIE_MAX = setPointsDeVie(pts);
 		PORTEE_VISUELLE = portee; 

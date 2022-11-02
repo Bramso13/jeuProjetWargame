@@ -2,15 +2,19 @@ package wargame.View;
 
 import java.awt.*;      
 import java.awt.event.*; 
-import javax.swing.*; 
+import javax.swing.*;
+
+import wargame.*;
+
 
 public class FenetreJeu {
 	
-	private static Carte carteJeu;
+	private static PanneauJeu carteJeu;
 	
 	public static void main(String[] args) {
 		
-		carteJeu = new Carte(); 
+		carteJeu = new PanneauJeu(); 
+		
 		
 		
 	}

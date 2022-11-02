@@ -5,6 +5,10 @@ import wargame.View.IConfig;
 public class Position implements IConfig {
 	private int x, y;
 	Position(int x, int y) { this.x = x; this.y = y; }
+	public Position() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public int getX() { return x; }
 	public int getY() { return y; }
 	public void setX(int x) { this.x = x; }

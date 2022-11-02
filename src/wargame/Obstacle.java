@@ -17,11 +17,19 @@ public class Obstacle extends Element{
 	
 	
 	private TypeObstacle TYPE;
-	private Position pos;
+	
+	public Obstacle() {
+		
+	}
 	
 	
 	Obstacle(TypeObstacle type, Position pos) { 
 		TYPE = type; this.pos = pos; 
 	}
 	public String toString() { return ""+TYPE; }
+	
+	@Override
+	public void test() {
+		System.out.println("obstacle");
+	}
 }
